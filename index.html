@@ -11,7 +11,6 @@
 <script type="text/javascript">
 var s=new Speedtest(); 
 s.onupdate=function(data){ //callback to update data in UI
-    I("ip").textContent=data.clientIp;
     I("dlText").textContent=(data.testState==1&&data.dlStatus==0)?"...":data.dlStatus;
     I("ulText").textContent=(data.testState==3&&data.ulStatus==0)?"...":data.ulStatus;
     I("pingText").textContent=data.pingStatus;
@@ -60,7 +59,6 @@ function startStop(){ //start/stop button pressed
 	}
 }
 
-//function to (re)initialize UI
 function initUI(){
 	I("dlText").textContent="";
 	I("ulText").textContent="";
@@ -178,7 +176,8 @@ function I(id){return document.getElementById(id);}
 </style>
 </head>
 <body>
-<h1>LibreSpeed Test</h1>
+<h1>HTTP/3 LibreSpeed Test</h1>
+
 <div id="startStopBtn" onclick="startStop()"></div>
 <div id="test">
 	<div class="testGroup">
@@ -204,9 +203,6 @@ function I(id){return document.getElementById(id);}
 			<div id="jitText" class="meterText"></div>
 			<div class="unit">ms</div>
 		</div>
-	</div>
-	<div id="ipArea">
-		IP Address: <span id="ip"></span>
 	</div>
 </div>
 
